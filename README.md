@@ -22,4 +22,4 @@ Vellora is an unofficial Emby client for Android and Android TV.
 
 ## Contact
 
-privacy@example.com
+velloradeveloper@outlook.com
