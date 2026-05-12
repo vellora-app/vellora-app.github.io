@@ -206,7 +206,7 @@
 
     <main>
         <h1>Política de privacidad</h1>
-        <p class="updated">Última actualización: 7 de mayo de 2026</p>
+        <p class="updated">Última actualización: 12 de mayo de 2026</p>
 
         <div class="highlight-box">
             <p>
@@ -225,6 +225,7 @@
                 <li><a href="#data-collected">Datos que se procesan</a></li>
                 <li><a href="#data-not-collected">Datos que NO recopilamos</a></li>
                 <li><a href="#third-parties">Servicios de terceros</a></li>
+                <li><a href="#crash-reporting">Telemetría de errores (Sentry)</a></li>
                 <li><a href="#emby-connect">Emby Connect</a></li>
                 <li><a href="#permissions">Permisos del dispositivo</a></li>
                 <li><a href="#security">Seguridad de los datos</a></li>
@@ -300,7 +301,7 @@
         </p>
         <ul>
             <li>Datos personales de ningún tipo</li>
-            <li>Datos de uso, telemetría o analítica</li>
+            <li>Datos de uso o analítica de comportamiento</li>
             <li>Identificadores publicitarios</li>
             <li>Ubicación del dispositivo</li>
             <li>Lista de contactos, fotos, archivos del dispositivo</li>
@@ -308,15 +309,17 @@
             <li>Credenciales de tu servidor Emby</li>
         </ul>
         <p>
-            Vellora <strong>no contiene anuncios</strong>, <strong>no
-            tiene SDKs de terceros</strong> y <strong>no se conecta a
-            servidores controlados por sus desarrolladores</strong>.
+            Vellora <strong>no contiene anuncios</strong> y
+            <strong>no se conecta a servidores controlados por sus
+            desarrolladores con fines comerciales</strong>. La única
+            excepción es el envío anónimo de informes de error a
+            <a href="#crash-reporting">Sentry</a> (ver sección 5), que
+            sirve exclusivamente para diagnosticar fallos técnicos.
         </p>
 
         <h2 id="third-parties">4. Servicios de terceros</h2>
         <p>
-            Vellora se conecta exclusivamente a los siguientes servicios,
-            siempre por iniciativa del usuario:
+            Vellora se conecta a los siguientes servicios:
         </p>
         <ul>
             <li>
@@ -331,14 +334,84 @@
                 sesión. Más detalles en la sección
                 <a href="#emby-connect">Emby Connect</a>.
             </li>
+            <li>
+                <strong>Sentry (<code>sentry.io</code>):</strong> servicio
+                de informes de errores. Solo se conecta cuando la
+                aplicación encuentra un fallo técnico, para enviar un
+                informe anónimo. Más detalles en la sección
+                <a href="#crash-reporting">Telemetría de errores</a>.
+            </li>
+        </ul>
+
+        <h2 id="crash-reporting">5. Telemetría de errores (Sentry)</h2>
+        <p>
+            Vellora utiliza <strong>Sentry</strong>
+            (<code>sentry.io</code>) para recopilar informes anónimos de
+            errores que nos ayudan a corregir fallos. Sentry es un
+            servicio operado por <strong>Functional Software, Inc.</strong>,
+            con sede en Estados Unidos, y está sujeto a las normas de
+            privacidad de la UE (GDPR) mediante cláusulas contractuales
+            tipo (SCCs).
+        </p>
+        <p>
+            Cuando la aplicación encuentra un error inesperado, se envía
+            a Sentry la siguiente información:
+        </p>
+        <ul>
+            <li>
+                Información técnica del dispositivo: modelo, fabricante,
+                versión de Android, idioma del sistema.
+            </li>
+            <li>
+                Versión de Vellora instalada.
+            </li>
+            <li>
+                Detalle técnico del error: tipo de excepción, función
+                donde ocurrió, líneas del código fuente afectadas
+                (<em>stack trace</em>).
+            </li>
+            <li>
+                Acciones recientes del usuario antes del error
+                (<em>breadcrumbs</em>): pulsaciones en botones, cambios
+                de pantalla, eventos del reproductor. Estos datos no
+                contienen credenciales, URLs personales ni títulos
+                visualizados.
+            </li>
         </ul>
         <p>
-            La aplicación <strong>no se comunica</strong> con servidores
-            controlados por los desarrolladores de Vellora. No hay
-            servicio de telemetría, crash reporting ni analítica.
+            <strong>Información que NUNCA se envía a Sentry:</strong>
+        </p>
+        <ul>
+            <li>Tu nombre de usuario, contraseña o tokens de acceso.</li>
+            <li>
+                La URL ni la dirección IP de tu servidor Emby personal
+                (se eliminan automáticamente del informe antes de
+                enviarlo).
+            </li>
+            <li>El identificador único de tu dispositivo (DeviceId).</li>
+            <li>El identificador de tu sesión de reproducción (PlaySessionId).</li>
+            <li>El nombre del contenido reproducido o visualizado.</li>
+            <li>Ningún dato que permita identificarte personalmente.</li>
+        </ul>
+        <p>
+            Estos datos se conservan en Sentry durante un máximo de 90
+            días y se utilizan exclusivamente para diagnosticar y
+            corregir problemas técnicos. No se comparten con terceros ni
+            se usan con fines comerciales o publicitarios.
+        </p>
+        <p>
+            Política de privacidad de Sentry:
+            <a href="https://sentry.io/privacy/" target="_blank"
+               rel="noopener">https://sentry.io/privacy/</a>
+        </p>
+        <p>
+            Si no deseas que se envíen estos informes anónimos, puedes
+            desinstalar la aplicación. En una futura versión está
+            previsto añadir un interruptor en los ajustes para
+            desactivar la telemetría.
         </p>
 
-        <h2 id="emby-connect">5. Emby Connect</h2>
+        <h2 id="emby-connect">6. Emby Connect</h2>
         <p>
             Si eliges iniciar sesión con <strong>Emby Connect</strong>, la
             aplicación se comunica con
@@ -366,7 +439,7 @@
             responsable del tratamiento de datos por parte de Emby LLC.
         </p>
 
-        <h2 id="permissions">6. Permisos del dispositivo</h2>
+        <h2 id="permissions">7. Permisos del dispositivo</h2>
         <p>
             Vellora solicita los siguientes permisos en Android, todos
             ellos necesarios para su funcionamiento básico:
@@ -410,7 +483,7 @@
             otros datos sensibles.
         </p>
 
-        <h2 id="security">7. Seguridad de los datos</h2>
+        <h2 id="security">8. Seguridad de los datos</h2>
         <p>
             Las credenciales de tu servidor Emby y los tokens de sesión se
             almacenan en el sistema de almacenamiento privado de Android
@@ -431,7 +504,7 @@
             siempre HTTPS.
         </p>
 
-        <h2 id="data-deletion">8. Eliminación de datos</h2>
+        <h2 id="data-deletion">9. Eliminación de datos</h2>
         <p>
             Como Vellora <strong>no aloja datos en servidores propios</strong>,
             no existe una "cuenta Vellora" que eliminar. Todos los datos que la
@@ -480,7 +553,7 @@
             <a href="mailto:velloradeveloper@outlook.com">velloradeveloper@outlook.com</a>.
         </p>
 
-        <h2 id="children">9. Menores de edad</h2>
+        <h2 id="children">10. Menores de edad</h2>
         <p>
             Vellora no está dirigida específicamente a menores de 13 años
             y no recopila intencionadamente datos de menores. El control
@@ -490,7 +563,7 @@
             servidor Emby (Settings → Users → Parental Control).
         </p>
 
-        <h2 id="changes">10. Cambios en esta política</h2>
+        <h2 id="changes">11. Cambios en esta política</h2>
         <p>
             Podemos actualizar esta política de privacidad ocasionalmente.
             La fecha de "Última actualización" en la parte superior
@@ -498,7 +571,7 @@
             en vigor desde el momento de su publicación en esta página.
         </p>
 
-        <h2 id="contact">11. Contacto</h2>
+        <h2 id="contact">12. Contacto</h2>
         <p>
             Si tienes dudas sobre esta política de privacidad o sobre el
             tratamiento de datos en Vellora, puedes contactar con
